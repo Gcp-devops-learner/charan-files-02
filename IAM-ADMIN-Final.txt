@@ -1,0 +1,40 @@
+
+/*######################
+  Custom Role IAM Admin
+*/ ######################
+
+
+module "iam-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "project"
+  org_id       = var.org_id
+  project_id = var.project_id
+  role_id      = "org_iam_admin"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-IAM@amex.com"]
+}
+
+
+module "iam-admin-folder" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "folder"
+  org_id       = var.org_id
+  folder_id    = var.folder_id
+  role_id      = "org_iam_admin"
+  members              = ["serviceAccount:amex-foundation-project@appspot.gserviceaccount.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-IAM@amex.com"]
+}
+
+ 
+ 
+
+
+
+
+
+
+
+
+

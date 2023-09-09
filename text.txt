@@ -1,0 +1,181 @@
+** resources ***
+prod
+   vpc
+   subnets
+   partner interconnect
+   firewall rules
+   routes
+
+
+
+dev
+   vpc
+   subnets
+   cloud vpn
+   firewall rules
+   routes
+
+
+test
+   vpc
+   subnets
+   cloud vpn
+   firewall rules
+   routes
+   
+
+*** folder structure ***
+
+network_nonprod
+   dev workspace
+   test workspace
+   engg workspace
+
+
+network_prod
+   prod workspace
+
+network_shared_services
+   shared_services workspace
+
+shared services
+
+vpc
+subnets
+make it as host
+ha cloud  vpn
+
+00:54
+we create a workspace is to associate it
+00:56
+with some set of terraform configuration
+00:59
+so we have our config now that
+01:03
+configuration can live in inversion
+01:05
+control so we have built in integrations
+01:08
+with things like github gitlab bitbucket
+01:10
+right out-of-the-box but you can also
+01:13
+upload configuration manually using the
+01:15
+api's or the CLI for example the next
+01:19
+thing that we need to do after we have
+01:20
+our configuration is to provide some
+01:23
+sort of variables for those
+01:24
+configuration files right so we have our
+01:27
+variables so we have this these two
+01:31
+things right here so now that we have
+01:33
+our configuration and our variables we
+01:35
+want to take them and actually do
+01:36
+something with it right we want to apply
+01:38
+these changes to our environment so if
+01:40
+you're familiar with how Tara from open
+01:42
+source works you know we split things up
+01:44
+into a plan and apply phase right so we
+01:46
+have our plan apply and in our plan we
+01:51
+see the steps that terraform is actually
+01:53
+going to take in our environment before
+01:55
+making any changes so all the resources
+01:57
+that it's going to create modify or
+01:59
+delete and then in the apply is where we
+02:01
+actually make the changes to our
+02:03
+environment and in terraform Enterprise
+02:05
+within the concept of a workspace we
+02:07
+wrap this whole thing up in what's
+02:09
+called a run and because we've separated
+02:13
+these two phase
+02:14
+right we have our plan and our ply we
+02:17
+can now serialize through these and add
+02:19
+additional steps so in terraform
+02:21
+enterprise we also add a phase for
+02:24
+sentinel if you're not familiar with
+02:29
+what sentinel is it's hoshi corpse
+02:31
+policy s code framework essentially it
+02:33
+lets us create guardrails or sand boxes
+02:37
+around different things that you can or
+02:39
+cannot do with terraform and also
+02:41
+because we have this separation of the
+02:42
+distinct phases here we're also able to
+02:44
+add additional steps as we add more
+02:46
+functionality to terraform Enterprise so
+02:50
+we take these steps and because we've
+02:52
+wrapped this in this logical construct
+02:53
+of a run we're also able to queue up
+02:55
+additional runs so that we're not
+02:57
+clobbering other people and they're you
+03:00
+know their resources and then finally
+03:02
+after a run completes and terraform goes
+03:05
+through the SEP steps of planning and
+03:08
+doing its policy checks and actually
+03:09
+applying the changes to the environment
+03:11
+we have the output of a state file and
+03:16
+it's important here to really outline
+03:19
+the distinction that for every workspace
+03:22
+you have a very deliberate one-to-one
+03:24
+mapping between the configuration and
+03:26
+the state file now the last thing that
+03:30
+we could do in the workspace is
+03:31
+basically take this entire thing and we
+03:33
+wrap it in a set of permissions 

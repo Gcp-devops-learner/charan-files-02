@@ -1,0 +1,428 @@
+module "resource-Locations-Restriction" {
+  source           =  "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/gcp.resourceLocations"
+  policy_type      = "list"
+  allow             = var.resourceLocations
+  //allow_list_length = length(var.resourceLocations)
+
+}
+
+
+module "org-policy" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/serviceuser.services"
+  policy_type      = "list"
+  allow             = var.services
+  allow_list_length = length(var.services)
+  enforce           = true
+  //exclude_folders  = var.exclude_folders
+  //exclude_projects = var.exclude_projects
+}
+
+
+module "GAE-Disable-Source-Code-Download" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/appengine.disableCodeDownload"
+  policy_type      = "boolean"
+  enforce           = true
+
+}
+
+module "GCF-Allowed-ingress-settings" {
+  source           =  "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/cloudfunctions.allowedIngressSettings"
+  policy_type      = "list"
+  allow             = var.allowedIngressSettings
+  //allow_list_length = length(var.allowedIngressSettings)
+
+}
+
+module "GCF-Allowed-VPC-Connector-egress-settings" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/cloudfunctions.allowedVpcConnectorEgressSettings"
+  policy_type      = "list"
+  allow             = var.allowedVpcConnectorEgressSettings
+  //allow_list_length = length(var.allowedVpcConnectorEgressSettings)
+
+}
+
+module "GCF-Require-VPC-Connector" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/cloudfunctions.requireVPCConnector"
+  policy_type      = "boolean"
+  enforce           = true
+
+}
+
+
+module "CloudSQL-Restrict-Public-IP-access" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/sql.restrictPublicIp"
+  policy_type      = "boolean"
+  enforce           = true
+
+}
+
+module "GCE-Disable-Guest-Attributes-of-Compute-Engine-metadata" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.disableGuestAttributesAccess"
+  policy_type      = "boolean"
+  enforce           = false
+
+}
+
+module "GCE-Disable-Internet-Network-Endpoint-Groups" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.disableInternetNetworkEndpointGroup"
+  policy_type      = "boolean"
+  enforce           = true
+
+}
+
+module "GCE-Disable-VM-nested-virtualization" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.disableNestedVirtualization"
+  policy_type      = "boolean"
+  enforce           = true
+
+}
+
+/*
+module "GCE-Restrict-LoadBalancer-Creation-Based-on-LoadBalancer-Types" {
+  source           =  "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.restrictLoadBalancerCreationForTypes"
+  policy_type      = "list"
+  //allow            = "INTERNAL_TCP_UDP"
+  allow             = var.restrictLoadBalancerCreationForTypes
+  //allow_list_length = length(var.restrictLoadBalancerCreationForTypes)
+
+}
+*/
+
+
+module "GCE-Restrict-Non-Confidential-Computing" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.restrictNonConfidentialComputing"
+  policy_type      = "list"
+  allow             = var.restrictNonConfidentialComputing
+  //allow_list_length = length(var.restrictNonConfidentialComputing)
+
+}
+
+module "GCE-Restrict-Partner-Interconnect-usage" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.restrictPartnerInterconnectUsage"
+  policy_type      = "list"
+  allow             = var.restrictPartnerInterconnectUsage
+  //allow_list_length = length(var.restrictPartnerInterconnectUsage)
+
+}
+
+
+module "GCE-Restrict-Shared-VPC-Host-Projects" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.restrictSharedVpcHostProjects"
+  policy_type      = "list"
+  allow             = var.restrictSharedVpcHostProjects
+  //allow_list_length = length(var.restrictSharedVpcHostProjects)
+
+}
+
+module "GCE-Restrict-Shared-VPC-Subnetworks" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.restrictSharedVpcSubnetworks"
+  policy_type      = "list"
+  allow             = var.restrictSharedVpcSubnetworks
+  //allow_list_length = length(var.restrictSharedVpcSubnetworks)
+
+}
+
+module "GCE-Restrict-VPC-peering-usage" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.restrictVpcPeering"
+  policy_type      = "list"
+  allow             = var.restrictVpcPeering
+  //allow_list_length = length(var.restrictVpcPeering)
+
+}
+
+module "GCE-Restrict-VPN-Peer-IPs" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.restrictVpnPeerIPs"
+  policy_type      = "list"
+  allow             = var.restrictVpnPeerIPs
+  //allow_list_length = length(var.restrictVpnPeerIPs)
+
+}
+
+module "GCE-Skip-default-network-creation" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.skipDefaultNetworkCreation"
+  policy_type      = "boolean"
+  enforce           = true
+
+}
+
+module "GCE-Compute-Storage-resource-use-restrictions-ComputeEngine-disks-images-and-snapshots" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.storageResourceUseRestrictions"
+  policy_type      = "list"
+  allow             = var.storageResourceUseRestrictions
+  //allow_list_length = length(var.storageResourceUseRestrictions)
+
+}
+
+module "GCE-Projects-that-can-be-used-for-image-storage-and-disk-instantiation-for-Compute-Engine" {
+  source           = "terraform-google-modules/org-policy/google"
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  policy_for       = "project"
+  constraint       = "constraints/compute.trustedImageProjects"
+  policy_type      = "boolean"
+  enforce          = false
+  allow            = var.trustedImageProjects
+  //allow_list_length = length(var.trustedImageProjects)
+  //exclude_folders = ["folders/${var.excluded_folder_id}"]
+
+}
+
+module "GCE-Restrict-VM-IP-Forwarding" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.vmCanIpForward"
+  policy_type      = "list"
+   deny              = var.vmCanIpForward
+  //deny_list_length = length(var.vmCanIpForward)
+
+}
+
+
+module "GCE-Restrict-external-IPs-for-VM-instances" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.vmExternalIpAccess"
+  policy_type      = "list"
+   deny              = var.vmExternalIpAccess
+  //deny_list_length = length(var.vmExternalIpAccess)
+
+}
+
+module "RM-Restricts-users-that-can-remove-a-Shared-VPC-project-lien-without-organization-level-permission" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/compute.restrictXpnProjectLienRemova"
+  policy_type      = "boolean"
+  enforce           = true
+
+}
+
+module "IAM-Allow-extending-lifetime-of-OAuth-access-tokens-to-upto-12hours" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/iam.allowServiceAccountCredentialLifetimeExtension"
+  policy_type      = "list"
+  deny              = var.allowServiceAccountCredentialLifetimeExtension
+  //deny_list_length = length(var.allowServiceAccountCredentialLifetimeExtension)
+
+}
+
+module "IAM-Disable-service-account-creation" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/iam.disableServiceAccountCreation"
+  policy_type      = "list"
+  allow             = var.disableServiceAccountCreation
+  //allow_list_length = length(var.disableServiceAccountCreation)
+
+}
+
+module "IAM-Disable-service-account-key-creation" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/iam.disableServiceAccountKeyCreation"
+  policy_type      = "list"
+  deny              = var.disableServiceAccountKeyCreation
+  //deny_list_length = length(var.adisableServiceAccountKeyCreation)
+
+}
+
+module "IAM-Disable-uploading-public-key-to-Service-Accounts" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/iam.disableServiceAccountKeyUpload"
+  policy_type      = "list"
+  deny              = var.disableServiceAccountKeyUpload
+  //deny_list_length = length(var.disableServiceAccountKeyUpload)
+
+}
+
+module "IAM-Disable-Workload-Identity-Cluster-Creation" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/iam.disableWorkloadIdentityClusterCreation"
+  policy_type      = "boolean"
+  enforce           = false
+
+}
+
+module "IAM-Disable-Automatic-IAM-Grants-for-Default-Service-Account" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/iam.automaticIamGrantsForDefaultServiceAccounts"
+  policy_type      = "boolean"
+  enforce           = false
+
+}
+
+module "GCS-Detailed-Audit-Logging-Mode" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/gcp.detailedAuditLoggingMode"
+  policy_type      = "boolean"
+  enforce           = true
+
+}
+
+module "GCS-Retention-policy-duration-in-seconds" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/storage.retentionPolicySeconds"
+  policy_type      = "list"
+  allow             = var.retentionPolicySeconds
+  //allow_list_length = length(var.retentionPolicySeconds)
+
+}
+
+module "GCS-Enforce-uniform-bucket-level-access" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/storage.uniformBucketLevelAccess"
+  policy_type      = "boolean"
+  enforce           = true
+
+}
+
+module "GCS-Restrict-public-access-for-all-buckets-and-objects" {
+  source           = "terraform-google-modules/org-policy/google"
+  policy_for       = var.policy_for
+  organization_id  = var.org_id
+  folder_id        = var.folder_id
+  project_id       = var.project_id
+  constraint       = "constraints/storage.publicAccessPrevention"
+  policy_type      = "boolean"
+  enforce           = true
+
+}

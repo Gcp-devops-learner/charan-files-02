@@ -1,0 +1,739 @@
+# Copyright 2021 Google LLC. This software is provided as-is, without warranty or representation for any use or purpose. Your use of it is subject to your agreement with Google.
+
+
+/*####################################
+  Custom Role Cloud Security Poweruser
+*/ ####################################
+
+
+module "cloud-security-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_security_poweruser"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-CloudSec@amex.com"]
+
+}
+
+/*##################################
+  Custom Role Infosec Audit
+*/ ##################################
+
+
+module "infosec-audit-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_infosecaudit_viewer"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-AAE3-Compl-SecGCPInfosecAudit@amex.com"]
+
+}
+
+/*##################################
+  Custom Role IAM Poweruser
+*/ ##################################
+
+
+module "iam-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_iam_poweruser"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-IAM@amex.com"]
+
+}
+
+/*##########################################
+  Custom Role Network Security Eng poweruser
+*/ ##########################################
+
+module "network-security-eng-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_netsec_poweruser"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-NetSec@amex.com", "group:PRC-AXP-BA-E3-AppAdmin-GCPNetSecOps@amex.com"]
+
+}
+
+
+/*##################################
+  Custom Role SIEM Poweruser
+*/ ##################################
+
+
+module "siem-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_siem_poweruser"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-SIEM@amex.com"]
+
+
+}
+
+
+
+
+
+/*######################
+  Custom Role IAM Admin
+*/ ######################
+
+
+module "iam-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_iam_admin"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-IAM@amex.com"]
+}
+
+ 
+/*#######################################
+  Custom Role Network Security Eng Admin
+*/ #######################################
+
+
+module "network-security-eng-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_netsec_admin"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-NetSec@amex.com", "group:PRC-AXP-BA-E3-AppAdmin-GCPNetSecOps@amex.com"]
+}
+
+
+/*########################
+  Custom Role SIEM Admin
+*/ ########################
+
+module "siem-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_siem_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-SIEM@amex.com"]
+}
+
+
+/*#####################
+  Custom Role IR Admin
+*/ #####################
+
+module "ir-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "project"
+  project_id       = var.project_id
+  role_id      = "org_ir_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCPInfosecMonitoring@amex.com"]
+}
+
+
+/*##########################
+  Custom Role Crypto Admin
+*/ ##########################
+
+module "crypto-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_crypto_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-Crypto@amex.com"]
+}
+
+
+/*########################
+  Custom Role DDI Admin
+*/ ########################
+
+
+module "ddi-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_ddi_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-AA-E3-AppAdmin-GCP-DDI@amex.com"]
+}
+
+/*##########################
+  Custom Role Billing Admin
+*/ ##########################
+
+module "billing-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_billing_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+ // members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-Billing@amex.com"]
+}
+
+
+/*###########################
+  Custom Role Network Admin
+*/ ###########################
+
+module "network-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_network_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-DCE@amex.com", "group:PRC-AXP-BA-E3-AppAdmin-GCP-GNOC@amex.com"]
+}
+
+/*####################################
+  Custom Role CloudSoultions Poweruser
+*/ ####################################
+
+module "cloudsolutions-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_solutions_pu"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-PU-E3-AppAdmin-GCP-Dev-Eng@amex.com"]
+}
+
+
+
+/*###############################
+  Custom Role CloudQE Poweruser
+*/ ###############################
+
+module "cloudqe-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_quality_pu"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-PU-E3-AppAdmin-GCP-TEST-Eng@amex.com"]
+}
+
+/*##################################
+  Custom Role IR Poweruser
+*/ ##################################
+
+
+module "ir-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_ir_poweruser"
+  members      = ["group:dc-amex-foundations@google.com"]
+ // members     = ["group:PRC-AXP-BA-E3-AppAdmin-GCPInfosecMonitoring@amex.com"]
+  
+}
+
+/*##################################
+  Custom Role DDI poweruser
+*/ ##################################
+
+module "ddi-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_ddi_poweruser"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members     = ["group:PRC-AXP-AA-E3-AppAdmin-GCP-DDI@amex.com"]
+ 
+}
+
+/*##################################
+  Custom Role Billing Poweruser
+*/ ##################################
+
+
+module "billing-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_billing_viewer"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members     = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-Billing@amex.com"]
+}
+
+
+/*##################################
+  Custom Role Network Poweruser
+*/ ##################################
+
+module "network-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_network_poweruser"
+  members      = ["group:dc-amex-foundations@google.com"]
+ // members     = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-DCE@amex.com", "group:PRC-AXP-BA-E3-AppAdmin-GCP-GNOC@amex.com"]
+  
+}
+
+/*##################################
+  Custom Role Product Poweruser
+*/ ##################################
+
+
+module "product-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_product_pu"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members     = ["group:PRC-AXP-PU-E3-AppSupp-GCP-CE-Product@amex.com"]
+
+}
+
+/*##################################
+  Custom Role CloudEng Admin
+*/ ##################################
+
+
+module "cloudeng-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_corefoundation_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members     = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-CF@amex.com"]
+  
+}
+
+/*##################################
+  Custom Role CloudEng Poweruser
+*/ ##################################
+
+module "cloudeng-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_corefoundation_poweruser"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-CF@amex.com"]
+  
+}
+
+
+
+
+
+
+
+# Copyright 2021 Google LLC. This software is provided as-is, without warranty or representation for any use or purpose. Your use of it is subject to your agreement with Google.
+
+
+/*####################################
+  Custom Role Cloud Security Poweruser
+*/ ####################################
+
+
+module "cloud-security-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_security_poweruser"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-CloudSec@amex.com"]
+
+}
+
+/*##################################
+  Custom Role Infosec Audit
+*/ ##################################
+
+
+module "infosec-audit-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_infosecaudit_viewer"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-AAE3-Compl-SecGCPInfosecAudit@amex.com"]
+
+}
+
+/*##################################
+  Custom Role IAM Poweruser
+*/ ##################################
+
+
+module "iam-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_iam_poweruser"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-IAM@amex.com"]
+
+}
+
+/*##########################################
+  Custom Role Network Security Eng poweruser
+*/ ##########################################
+
+module "network-security-eng-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_netsec_poweruser"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-NetSec@amex.com", "group:PRC-AXP-BA-E3-AppAdmin-GCPNetSecOps@amex.com"]
+
+}
+
+
+/*##################################
+  Custom Role SIEM Poweruser
+*/ ##################################
+
+
+module "siem-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_siem_poweruser"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-SIEM@amex.com"]
+
+
+}
+
+/*####################################
+  Custom Role Cloud Security Admin
+*/ ####################################
+
+
+module "cloud-security-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_security_admin"
+  members              = ["group:dc-amex-foundations@google.com"]
+ // members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-CloudSec@amex.com"]
+
+}
+
+/*######################
+  Custom Role IAM Admin
+*/ ######################
+
+
+module "iam-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_iam_admin"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-IAM@amex.com"]
+}
+
+ 
+/*#######################################
+  Custom Role Network Security Eng Admin
+*/ #######################################
+
+
+module "network-security-eng-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_netsec_admin"
+  members              = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-NetSec@amex.com", "group:PRC-AXP-BA-E3-AppAdmin-GCPNetSecOps@amex.com"]
+}
+
+
+/*########################
+  Custom Role SIEM Admin
+*/ ########################
+
+module "siem-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_siem_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-SIEM@amex.com"]
+}
+
+
+/*#####################
+  Custom Role IR Admin
+*/ #####################
+
+module "ir-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "project"
+  org_id       = var.org_id
+  role_id      = "org_ir_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCPInfosecMonitoring@amex.com"]
+}
+
+
+/*##########################
+  Custom Role Crypto Admin
+*/ ##########################
+
+module "crypto-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_crypto_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-Crypto@amex.com"]
+}
+
+
+/*########################
+  Custom Role DDI Admin
+*/ ########################
+
+
+module "ddi-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_ddi_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-AA-E3-AppAdmin-GCP-DDI@amex.com"]
+}
+
+/*##########################
+  Custom Role Billing Admin
+*/ ##########################
+
+module "billing-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_billing_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+ // members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-Billing@amex.com"]
+}
+
+
+/*###########################
+  Custom Role Network Admin
+*/ ###########################
+
+module "network-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_network_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-DCE@amex.com", "group:PRC-AXP-BA-E3-AppAdmin-GCP-GNOC@amex.com"]
+}
+
+/*####################################
+  Custom Role CloudSoultions Poweruser
+*/ ####################################
+
+module "cloudsolutions-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_solutions_pu"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-PU-E3-AppAdmin-GCP-Dev-Eng@amex.com"]
+}
+
+
+
+/*###############################
+  Custom Role CloudQE Poweruser
+*/ ###############################
+
+module "cloudqe-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_quality_pu"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-PU-E3-AppAdmin-GCP-TEST-Eng@amex.com"]
+}
+
+/*##################################
+  Custom Role IR Poweruser
+*/ ##################################
+
+
+module "ir-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_ir_poweruser"
+  members      = ["group:dc-amex-foundations@google.com"]
+ // members     = ["group:PRC-AXP-BA-E3-AppAdmin-GCPInfosecMonitoring@amex.com"]
+  
+}
+
+/*##################################
+  Custom Role DDI poweruser
+*/ ##################################
+
+module "ddi-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_ddi_poweruser"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members     = ["group:PRC-AXP-AA-E3-AppAdmin-GCP-DDI@amex.com"]
+ 
+}
+
+/*##################################
+  Custom Role Billing Poweruser
+*/ ##################################
+
+
+module "billing-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_billing_viewer"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members     = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-Billing@amex.com"]
+}
+
+
+/*##################################
+  Custom Role Network Poweruser
+*/ ##################################
+
+module "network-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_network_poweruser"
+  members      = ["group:dc-amex-foundations@google.com"]
+ // members     = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-DCE@amex.com", "group:PRC-AXP-BA-E3-AppAdmin-GCP-GNOC@amex.com"]
+  
+}
+
+/*##################################
+  Custom Role Product Poweruser
+*/ ##################################
+
+
+module "product-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_product_pu"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members     = ["group:PRC-AXP-PU-E3-AppSupp-GCP-CE-Product@amex.com"]
+
+}
+
+/*##################################
+  Custom Role CloudEng Admin
+*/ ##################################
+
+
+module "cloudeng-admin-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_corefoundation_admin"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members     = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-CF@amex.com"]
+  
+}
+
+/*##################################
+  Custom Role CloudEng Poweruser
+*/ ##################################
+
+module "cloudeng-poweruser-binding" {
+  source = "../../modules/iam/iam-member-binding"
+
+  target_level = "org"
+  org_id       = var.org_id
+  role_id      = "org_corefoundation_poweruser"
+  members      = ["group:dc-amex-foundations@google.com"]
+  //members      = ["group:PRC-AXP-BA-E3-AppAdmin-GCP-CF@amex.com"]
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

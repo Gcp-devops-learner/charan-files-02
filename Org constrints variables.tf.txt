@@ -1,0 +1,154 @@
+
+variable "policy_for" {
+  description = "Resource hierarchy node to apply the policy to: can be one of `organization`, `folder`, or `project`."
+  type        = string
+}
+
+variable "project_id" {
+  description = "The project id for putting the policy"
+  type        = string
+  default     = null
+}
+/*
+variable "exclude_folders" {
+  description = "Set of folders to exclude from the policy"
+  type        = set(string)
+  default     = []
+}
+
+variable "exclude_projects" {
+  description = "Set of projects to exclude from the policy"
+  type        = set(string)
+  default     = []
+}
+*/
+
+variable "resourceLocations" {
+  description = "The list of resource locations are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "services" {
+  description = "The list of services are allowed"
+  type        = list(string)
+  default     = []
+}
+
+
+variable "allowedIngressSettings" {
+  description = "The list of allowedIngressSettings are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "allowedVpcConnectorEgressSettings" {
+  description = "The list of allowedVpcConnectorEgressSettings are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "restrictLoadBalancerCreationForTypes" {
+  description = "The list of restrictLoadBalancerCreationForTypes are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "restrictNonConfidentialComputing" {
+  description = "The list of restrictNonConfidentialComputing are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "restrictPartnerInterconnectUsage" {
+  description = "The list of restrictPartnerInterconnectUsage are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "restrictSharedVpcSubnetworks" {
+  description = "The list of restrictSharedVpcSubnetworks are allowed"
+  type        = list(string)
+  default     = []
+}
+
+
+variable "restrictSharedVpcHostProjects" {
+  description = "The list of restrictSharedVpcHostProjects are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "restrictVpcPeering" {
+  description = "The list of restrictVpcPeering are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "restrictVpnPeerIPs" {
+  description = "The list of restrictVpnPeerIPs are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "storageResourceUseRestrictions" {
+  description = "The list of storageResourceUseRestrictions are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "trustedImageProjects" {
+  description = "The list of trustedImageProjects are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "vmCanIpForward" {
+  description = "The list of vmCanIpForward are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "vmExternalIpAccess" {
+  description = "The list of vmExternalIpAccess are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "allowServiceAccountCredentialLifetimeExtension" {
+  description = "The list of allowServiceAccountCredentialLifetimeExtension are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "disableServiceAccountCreation" {
+  description = "The list of disableServiceAccountCreation are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "disableServiceAccountKeyCreation" {
+  description = "The list of disableServiceAccountKeyCreation are allowed"
+  type        = list(string)
+  default     = []
+}
+
+
+variable "disableServiceAccountKeyUpload" {
+  description = "The list of disableServiceAccountKeyUpload are allowed"
+  type        = list(string)
+  default     = []
+}
+
+
+variable "retentionPolicySeconds" {
+  description = "The list of retentionPolicySeconds are allowed"
+  type        = list(string)
+  default     = []
+}
+
+variable "publicAccessPrevention" {
+  description = "The list of publicAccessPrevention are allowed"
+  type        = list(string)
+  default     = []
+}
